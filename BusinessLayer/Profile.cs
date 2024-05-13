@@ -65,6 +65,7 @@ namespace BusinessLayer
             this.Email = email;
             this.Password = password;
             this.Accepted = false;
+            this.Rating = 0;
             this.ApplicationSubmited = false;
             this.IsAdmin = isAdmin;
             this.PointsCompetition1 = 0;
