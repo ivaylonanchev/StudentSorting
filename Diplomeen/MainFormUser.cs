@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLayer;
+using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,21 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Diplomeen
+namespace PresentationLayer
 {
-    public partial class model : Form
+    public partial class MainFormUser : Form
     {
         //Fields
         private Button currentButton;
         private Random random;
         private int tempIndex;
+        private Form activeForm;
+        Profile profile;
+        private Label fancylabel;
 
         //Constructor
-        public model()
+        public MainFormUser(Profile prof)
         {
             InitializeComponent();
+            profile = prof;
             random = new Random();
         }
+
 
         //Methods
         private Color SelectThemeColor()
@@ -65,6 +72,21 @@ namespace Diplomeen
                 }
             }
         }
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            ActiveButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(childForm);
+            this.panel1.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            lblTitle.Text = childForm.Text;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -77,38 +99,70 @@ namespace Diplomeen
 
         private void sustezaniq_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
-            login form = new login();
-            form.ShowDialog();
-            this.Hide();
+            OpenChildForm(new CompetitionFormUser(), sender);
         }
 
         private void klasirane_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            OpenChildForm(new CompetitionStandingsFormUser(), sender);
         }
 
         private void podadeniZaqvleniq_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            OpenChildForm(new SubmittedApplicationsFormUser(profile), sender);
         }
 
         private void prietiUchenici_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            OpenChildForm(new AcceptedStudentsFormUser(), sender);
         }
 
         private void profil_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            OpenChildForm(new FormProfile(profile), sender);
         }
 
         private void reiting_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            OpenChildForm(new RatingStudents(), sender);
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void model_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelLogo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            OpenChildForm(new HomeScreen(), sender);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

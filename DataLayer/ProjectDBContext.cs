@@ -1,6 +1,5 @@
 ﻿using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
-using Renci.SshNet.Messages;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -24,29 +23,26 @@ namespace DataLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("Server=127.0.0.1;Database=SchoolDb3;Uid=root;Pwd=123456789;");
-            /*optionsBuilder.UseInMemoryDatabase("SchoolDb");*/
-
-
+            optionsBuilder.UseMySQL("Server=localhost;Database=SchoolDbFinal1;Uid=root;Pwd=123456789;");
+            optionsBuilder.EnableSensitiveDataLogging();
             base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /*modelBuilder.Entity<CompetitionScore>()
-                .HasOne(cs => cs.StudentEGN)
-                .WithMany(s => s.CompetitionScores)
-                .HasForeignKey(cs => cs.StudentEGN);*/
-
+            modelBuilder.Entity<Profile>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
+            modelBuilder.Entity<Profile>()
+            .HasIndex(u => u.EGN)
+            .IsUnique();
+            
         }
-
-
-
-        public DbSet<Student> Students{ get; set; }
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Competition> Competitions { get; set; }
+        public DbSet<Application> Applications { get; set; }
 
-        public DbSet<CompetitionScore> CompetitionScores { get; set; }
+        
     }
 }

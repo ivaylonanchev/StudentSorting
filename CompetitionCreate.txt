@@ -1,0 +1,8 @@
+private async Task button1_ClickAsync(object sender, EventArgs e)
+        {
+            string Name = textBox1.Text;
+            DateTime date = dateTimePicker1.Value;
+            Competition competition = new Competition(Name, date);
+            CompetitionManager competitionmanager = new CompetitionManager(ProjectDbManager.CreateContext());
+            await competitionmanager.CreateAsync(competition);
+        }

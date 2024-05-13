@@ -1,8 +1,10 @@
 ﻿using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,15 +73,29 @@ namespace DataLayer
                 throw ex;
             }
         }
+        public async Task<Profile> ReadAsync(string egn)
+        {
+            try
+            {
+                return await context.Profiles.FirstOrDefaultAsync(p => p.EGN == egn);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public async Task UpdateAsync(Profile item)
         {
             try
             {
-                Profile profileFromDB = await ReadAsync(item.ID);
+                /*  Profile profileFromDB = await ReadAsync(item.ID);
 
-                context.Entry(profileFromDB).CurrentValues.SetValues(item);
-                context.SaveChanges();
+                  context.Entry(profileFromDB).CurrentValues.SetValues(item);*/
+                context.Update(item);
+                await context.SaveChangesAsync();
 
             }
             catch (Exception ex)

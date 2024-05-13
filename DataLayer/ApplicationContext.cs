@@ -1,28 +1,25 @@
 ﻿using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class StudentContext : IDB<Student, string>
+    public class ApplicationContext : IDB<Application, int>
     {
         private ProjectDbContext context;
-        public StudentContext(ProjectDbContext _context)
+        public ApplicationContext(ProjectDbContext context)
         {
             this.context = context;
         }
-        public async Task CreateAsync(Student item)
+        public async Task CreateAsync(Application item)
         {
             try
             {
-                context.Students.Add(item);
+                context.Applications.Add(item);
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -32,13 +29,13 @@ namespace DataLayer
             }
         }
 
-        public async Task DeleteAsync(string key)
+        public async Task DeleteAsync(int key)
         {
             try
             {
-                Student studentdb = await context.Students.FindAsync(key);
+                Application Applicationdb = await context.Applications.FindAsync(key);
 
-                context.Students.Remove(studentdb);
+                context.Applications.Remove(Applicationdb);
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -48,11 +45,11 @@ namespace DataLayer
             }
         }
 
-        public async Task<List<Student>> ReadAllAsync()
+        public async Task<List<Application>> ReadAllAsync()
         {
             try
             {
-                return await context.Students.ToListAsync();
+                return await context.Applications.ToListAsync();
             }
             catch (Exception ex)
             {
@@ -61,11 +58,11 @@ namespace DataLayer
             }
         }
 
-        public async Task<Student> ReadAsync(string key)
+        public async Task<Application> ReadAsync(int key)
         {
             try
             {
-                return await context.Students.FindAsync(key);
+                return await context.Applications.FindAsync(key);
 
             }
             catch (Exception ex)
@@ -75,11 +72,11 @@ namespace DataLayer
             }
         }
 
-        public async Task UpdateAsync(Student item)
+        public async Task UpdateAsync(Application item)
         {
             try
             {
-                Student orderFromDB = await ReadAsync(item.EGN);
+                Application orderFromDB = await ReadAsync(item.ID);
 
                 context.Entry(orderFromDB).CurrentValues.SetValues(item);
                 context.SaveChanges();
@@ -93,3 +90,4 @@ namespace DataLayer
         }
     }
 }
+

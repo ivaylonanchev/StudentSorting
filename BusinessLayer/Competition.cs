@@ -15,15 +15,20 @@ namespace BusinessLayer
         public string Name { get; set; }
         [Required]
         public DateTime Date { get; set; }
-        public virtual List<CompetitionScore> StudentsScore { get; set; }
+        [Required]
+        public bool IsConducted { get; set; } = false;
+        
+        public List<Profile> Students { get; set; }
         private Competition()
         {
             
         }
+        
         public Competition(string name, DateTime date)
         {
             this.Name = name;
             this.Date = date;
+            Students = new List<Profile>();
         }
 
 

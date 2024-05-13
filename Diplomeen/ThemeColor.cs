@@ -5,23 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplomeen
+namespace PresentationLayer
 {
     public static class ThemeColor
     {
-          public static List<string> ColorList = new List<string> { "#3F51B5",
-                                                                    "#FF5722",
-                                                                    "#FF9800",
-                                                                    "#2196F3",
-                                                                    "#EA676C",
-                                                                    "#E41A4A",
-                                                                    "#5978BB",
-                                                                    "#EA4833",
-                                                                    "#ae281d",
-                                                                    "#126881",
-                                                                    "#364D5B",
-                                                                    "#0094BC",
-                                                                    "#B71C46"};
+          public static List<string> ColorList = new List<string> { "#1a2038",
+                                                                    "#29293D"};
         public static Color ChangeColorBrightness(Color color, double correctionFactor)
         {
             double red = color.R;

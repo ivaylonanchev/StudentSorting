@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
@@ -14,8 +16,27 @@ namespace DataLayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("BusinessLayer.Application", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateApplied")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ProfileID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProfileID");
+
+                    b.ToTable("Applications");
+                });
 
             modelBuilder.Entity("BusinessLayer.Competition", b =>
                 {
@@ -24,44 +45,18 @@ namespace DataLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsConducted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("ID");
 
                     b.ToTable("Competitions");
-                });
-
-            modelBuilder.Entity("BusinessLayer.CompetitionScore", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompetitionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProfileID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentEGN")
-                        .HasColumnType("varchar(767)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CompetitionId");
-
-                    b.HasIndex("ProfileID");
-
-                    b.HasIndex("StudentEGN");
-
-                    b.ToTable("CompetitionScores");
                 });
 
             modelBuilder.Entity("BusinessLayer.Profile", b =>
@@ -76,101 +71,88 @@ namespace DataLayer.Migrations
                     b.Property<bool>("ApplicationSubmited")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("CompetitionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EGN")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("varchar(1)");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("MiddleName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("PointsCompetition1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PointsCompetition2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PointsCompetition3")
+                        .HasColumnType("int");
 
                     b.Property<double>("Rating")
                         .HasColumnType("double");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CompetitionID");
+
+                    b.HasIndex("EGN")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Profiles");
                 });
 
-            modelBuilder.Entity("BusinessLayer.Student", b =>
+            modelBuilder.Entity("BusinessLayer.Application", b =>
                 {
-                    b.Property<string>("EGN")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<char>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("MiddleName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("Profile_FKID")
-                        .HasColumnType("int");
-
-                    b.HasKey("EGN");
-
-                    b.HasIndex("Profile_FKID");
-
-                    b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("BusinessLayer.CompetitionScore", b =>
-                {
-                    b.HasOne("BusinessLayer.Competition", "Competition_FK")
-                        .WithMany("StudentsScore")
-                        .HasForeignKey("CompetitionId")
+                    b.HasOne("BusinessLayer.Profile", "Profile")
+                        .WithMany()
+                        .HasForeignKey("ProfileID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BusinessLayer.Profile", null)
-                        .WithMany("PointsPerCompetition")
-                        .HasForeignKey("ProfileID");
-
-                    b.HasOne("BusinessLayer.Student", "Student_FK")
-                        .WithMany("CompetitionScores")
-                        .HasForeignKey("StudentEGN");
-
-                    b.Navigation("Competition_FK");
-
-                    b.Navigation("Student_FK");
-                });
-
-            modelBuilder.Entity("BusinessLayer.Student", b =>
-                {
-                    b.HasOne("BusinessLayer.Profile", "Profile_FK")
-                        .WithMany()
-                        .HasForeignKey("Profile_FKID");
-
-                    b.Navigation("Profile_FK");
-                });
-
-            modelBuilder.Entity("BusinessLayer.Competition", b =>
-                {
-                    b.Navigation("StudentsScore");
+                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("BusinessLayer.Profile", b =>
                 {
-                    b.Navigation("PointsPerCompetition");
+                    b.HasOne("BusinessLayer.Competition", null)
+                        .WithMany("Students")
+                        .HasForeignKey("CompetitionID");
                 });
 
-            modelBuilder.Entity("BusinessLayer.Student", b =>
+            modelBuilder.Entity("BusinessLayer.Competition", b =>
                 {
-                    b.Navigation("CompetitionScores");
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

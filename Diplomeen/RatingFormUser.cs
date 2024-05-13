@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Diplomeen
+namespace PresentationLayer
 {
-    public partial class Form1 : model
+    public partial class RatingFormUser : Form
     {
-        public Form1()
+        public RatingFormUser()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-        //  private void sustezaniq_Click(object sender, EventArgs e)
     }
 }

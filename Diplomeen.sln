@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diplomeen", "Diplomeen\Diplomeen.csproj", "{C5E7A83B-5D69-4E38-9987-22895BED7296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "Diplomeen\PresentationLayer.csproj", "{C5E7A83B-5D69-4E38-9987-22895BED7296}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{79195CA9-6788-4C7C-89BE-9490644C0565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{79195CA9-6788-4C7C-89BE-9490644C0565}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{35632AAE-5814-432C-81DD-7E142C7131F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{35632AAE-5814-432C-81DD-7E142C7131F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{AFA82412-74BF-49A6-9A79-FC56E98E9585}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{AFA82412-74BF-49A6-9A79-FC56E98E9585}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
