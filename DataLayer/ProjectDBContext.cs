@@ -23,9 +23,11 @@ namespace DataLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("Server=localhost;Database=SchoolDbFinal1;Uid=root;Pwd=123456789;");
-            optionsBuilder.EnableSensitiveDataLogging();
-            base.OnConfiguring(optionsBuilder);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=DESKTOP-FE75MLC\\SQLEXPRESS;Database=StudentSorting;TrustServerCertificate=true; Integrated Security=True;");
+                optionsBuilder.EnableSensitiveDataLogging();
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,13 +38,13 @@ namespace DataLayer
             modelBuilder.Entity<Profile>()
             .HasIndex(u => u.EGN)
             .IsUnique();
-            
+
         }
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Application> Applications { get; set; }
 
-        
+
     }
 }

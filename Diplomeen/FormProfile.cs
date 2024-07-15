@@ -62,7 +62,7 @@ namespace PresentationLayer
             try
             {
                 Login form = new Login();
-                System.Windows.Forms.Application.ExitThread();
+                System.Windows.Forms.Application.Restart();
                 form.ShowDialog();
             }
             catch(Exception ex)

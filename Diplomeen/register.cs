@@ -2,6 +2,7 @@
 using DataLayer;
 using Microsoft.AspNetCore.Identity;
 using ServiceLayer;
+using ServiceLayer.EntityManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

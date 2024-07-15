@@ -1,28 +1,30 @@
 ﻿using BusinessLayer;
-using DataLayer;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceLayer
+namespace DataLayer.EntityContext
 {
-    public class ApplicationManager : IManager<Application, int>
+    public class ApplicationContext : IDB<Application, int>
     {
-        ApplicationContext _context;
-        public ApplicationManager(ProjectDbContext context)
+        private ProjectDbContext context;
+        public ApplicationContext(ProjectDbContext context)
         {
-            _context = new ApplicationContext(context);
+            this.context = context;
         }
         public async Task CreateAsync(Application item)
         {
             try
             {
-                await _context.CreateAsync(item);
+                context.Applications.Add(item);
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
@@ -31,10 +33,14 @@ namespace ServiceLayer
         {
             try
             {
-                await _context.DeleteAsync(key);
+                Application Applicationdb = await context.Applications.FindAsync(key);
+
+                context.Applications.Remove(Applicationdb);
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
@@ -43,10 +49,11 @@ namespace ServiceLayer
         {
             try
             {
-                return await _context.ReadAllAsync();
+                return await context.Applications.ToListAsync();
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
@@ -55,10 +62,12 @@ namespace ServiceLayer
         {
             try
             {
-                return await _context.ReadAsync(key);
+                return await context.Applications.FindAsync(key);
+
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
@@ -67,12 +76,18 @@ namespace ServiceLayer
         {
             try
             {
-                await _context.UpdateAsync(item);
+                Application orderFromDB = await ReadAsync(item.ID);
+
+                context.Entry(orderFromDB).CurrentValues.SetValues(item);
+                context.SaveChanges();
+
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
     }
 }
+

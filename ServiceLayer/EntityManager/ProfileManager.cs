@@ -1,32 +1,29 @@
 ﻿using BusinessLayer;
-using Microsoft.EntityFrameworkCore;
+using DataLayer;
+using DataLayer.EntityContext;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer
+namespace ServiceLayer
 {
-    public class ProfileContext : IDB<Profile, int>
+    public class ProfileManager : IManager<Profile, int>
     {
-        private ProjectDbContext context;
-        public ProfileContext(ProjectDbContext context)
+        ProfileContext _context;
+        public ProfileManager(ProjectDbContext context)
         {
-            this.context = context;
+            _context = new ProfileContext(context);
         }
         public async Task CreateAsync(Profile item)
         {
             try
             {
-                context.Profiles.Add(item);
-                await context.SaveChangesAsync();
+                await _context.CreateAsync(item);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -35,14 +32,10 @@ namespace DataLayer
         {
             try
             {
-                Profile profiledb = await context.Profiles.FindAsync(key);
-
-                context.Profiles.Remove(profiledb);
-                await context.SaveChangesAsync();
+                await _context.DeleteAsync(key);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -51,11 +44,10 @@ namespace DataLayer
         {
             try
             {
-                return await context.Profiles.ToListAsync();
+                return await _context.ReadAllAsync();
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -64,12 +56,10 @@ namespace DataLayer
         {
             try
             {
-                return await context.Profiles.FindAsync(key);
-
+                return await _context.ReadAsync(key);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -77,12 +67,10 @@ namespace DataLayer
         {
             try
             {
-                return await context.Profiles.FirstOrDefaultAsync(p => p.EGN == egn);
-
+                return await _context.ReadAsync(egn);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -91,16 +79,10 @@ namespace DataLayer
         {
             try
             {
-                /*  Profile profileFromDB = await ReadAsync(item.ID);
-
-                  context.Entry(profileFromDB).CurrentValues.SetValues(item);*/
-                context.Update(item);
-                await context.SaveChangesAsync();
-
+                await _context.UpdateAsync(item);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

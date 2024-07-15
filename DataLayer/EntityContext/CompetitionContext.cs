@@ -1,12 +1,11 @@
 ﻿using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Bcpg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace DataLayer
+namespace DataLayer.EntityContext
 {
     public class CompetitionContext : IDB<Competition, int>
     {

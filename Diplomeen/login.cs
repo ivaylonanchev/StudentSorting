@@ -84,7 +84,7 @@ namespace PresentationLayer
         {
             try
             {
-                string EGN = textBox3.Text;
+                string email = textBox3.Text;
                 string password = textBox2.Text;
 
                 if ((await PM.ReadAllAsync()).Where(P => P.IsAdmin == true).ToList().Count == 0)
@@ -92,7 +92,7 @@ namespace PresentationLayer
                     await GenerateAdmin();
                 }
 
-                Profile profile = (await PM.ReadAllAsync()).FirstOrDefault(p => p.EGN == EGN);
+                Profile profile = (await PM.ReadAllAsync()).FirstOrDefault(p => p.Email == email);
 
 
                 // Profile profile = await PM.ReadAsync(EGN);

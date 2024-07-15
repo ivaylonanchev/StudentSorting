@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            //mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             panel5 = new System.Windows.Forms.Panel();
             labelEGN = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -56,10 +56,10 @@
             // 
             // mySqlCommand1
             // 
-            mySqlCommand1.CacheAge = 0;
-            mySqlCommand1.Connection = null;
-            mySqlCommand1.EnableCaching = false;
-            mySqlCommand1.Transaction = null;
+            ////mySqlCommand1.CacheAge = 0;
+            ////mySqlCommand1.Connection = null;
+            ////mySqlCommand1.EnableCaching = false;
+            ////mySqlCommand1.Transaction = null;
             // 
             // panel5
             // 
@@ -276,7 +276,6 @@
         }
 
         #endregion
-        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelLastName;
