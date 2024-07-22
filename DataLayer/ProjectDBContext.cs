@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -38,13 +39,21 @@ namespace DataLayer
             modelBuilder.Entity<Profile>()
             .HasIndex(u => u.EGN)
             .IsUnique();
+            modelBuilder.Entity<Competition>()
+            .HasMany(c => c.CompetitionScores);
+            modelBuilder.Entity<CompetitionScore>()
+                .HasKey(x => new { x.ProfileId, x.CompetitionId });
+
+            //modelBuilder.Entity<Competition>().HasMany<Profile>()
+
+
 
         }
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Application> Applications { get; set; }
-
+        public DbSet<CompetitionScore> CompetitionsScores { get; set; }
 
     }
 }

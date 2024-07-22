@@ -64,7 +64,7 @@ namespace PresentationLayer
             }
             else
             {
-
+                MessageBox.Show("Невалидно ЕГН");
             }
         }
 
@@ -106,6 +106,11 @@ namespace PresentationLayer
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
         }

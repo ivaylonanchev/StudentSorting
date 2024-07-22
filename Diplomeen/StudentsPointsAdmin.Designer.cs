@@ -42,25 +42,29 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new System.Drawing.Point(180, 131);
+            textBox1.Location = new System.Drawing.Point(158, 98);
+            textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(125, 27);
+            textBox1.Size = new System.Drawing.Size(110, 23);
             textBox1.TabIndex = 0;
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new System.Drawing.Point(488, 132);
+            numericUpDown1.Location = new System.Drawing.Point(427, 99);
+            numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new System.Drawing.Size(150, 27);
+            numericUpDown1.Size = new System.Drawing.Size(131, 23);
             numericUpDown1.TabIndex = 1;
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // button1
             // 
             button1.BackColor = System.Drawing.Color.FromArgb(93, 93, 128);
             button1.ForeColor = System.Drawing.SystemColors.Control;
-            button1.Location = new System.Drawing.Point(190, 193);
+            button1.Location = new System.Drawing.Point(166, 145);
+            button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(94, 37);
+            button1.Size = new System.Drawing.Size(82, 28);
             button1.TabIndex = 2;
             button1.Text = "Провери";
             button1.UseVisualStyleBackColor = false;
@@ -70,9 +74,10 @@
             // 
             button2.BackColor = System.Drawing.Color.FromArgb(93, 93, 128);
             button2.ForeColor = System.Drawing.SystemColors.Control;
-            button2.Location = new System.Drawing.Point(500, 193);
+            button2.Location = new System.Drawing.Point(438, 145);
+            button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(94, 37);
+            button2.Size = new System.Drawing.Size(82, 28);
             button2.TabIndex = 3;
             button2.Text = "Оцени";
             button2.UseVisualStyleBackColor = false;
@@ -81,9 +86,10 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new System.Drawing.Point(500, 251);
+            radioButton1.Location = new System.Drawing.Point(438, 188);
+            radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new System.Drawing.Size(117, 24);
+            radioButton1.Size = new System.Drawing.Size(94, 19);
             radioButton1.TabIndex = 4;
             radioButton1.TabStop = true;
             radioButton1.Text = "radioButton1";
@@ -93,9 +99,10 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new System.Drawing.Point(499, 294);
+            radioButton2.Location = new System.Drawing.Point(437, 220);
+            radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new System.Drawing.Size(117, 24);
+            radioButton2.Size = new System.Drawing.Size(94, 19);
             radioButton2.TabIndex = 5;
             radioButton2.TabStop = true;
             radioButton2.Text = "radioButton2";
@@ -104,9 +111,10 @@
             // radioButton3
             // 
             radioButton3.AutoSize = true;
-            radioButton3.Location = new System.Drawing.Point(499, 341);
+            radioButton3.Location = new System.Drawing.Point(437, 256);
+            radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new System.Drawing.Size(117, 24);
+            radioButton3.Size = new System.Drawing.Size(94, 19);
             radioButton3.TabIndex = 6;
             radioButton3.TabStop = true;
             radioButton3.Text = "radioButton3";
@@ -115,26 +123,26 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(466, 53);
+            label1.Location = new System.Drawing.Point(408, 40);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(195, 40);
+            label1.Size = new System.Drawing.Size(152, 30);
             label1.TabIndex = 7;
             label1.Text = "Първо избери състезание,\r\nслед което оцени ученика";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(77, 134);
+            label2.Location = new System.Drawing.Point(67, 100);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(97, 20);
+            label2.Size = new System.Drawing.Size(76, 15);
             label2.TabIndex = 8;
             label2.Text = "Въведи ЕГН :";
             // 
             // StudentsPointsAdmin
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(700, 338);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(radioButton3);
@@ -144,6 +152,7 @@
             Controls.Add(button1);
             Controls.Add(numericUpDown1);
             Controls.Add(textBox1);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "StudentsPointsAdmin";
             Text = "StudentsPointsAdmin";
             Load += StudentsPointsAdmin_Load;

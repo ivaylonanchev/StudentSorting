@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.VisualBasic.ApplicationServices;
 using ServiceLayer;
@@ -127,7 +128,27 @@ namespace PresentationLayer
             Profile prof = new Profile("admin@gmail.com", "admin", true, "2222222222", "admin", "admin", "admin", DateTime.Now);
             prof.IsAdmin = true;
             prof.Password = HashPassword(prof.Password);
-            await PM.CreateAsync(prof);
+            try
+            {
+                await PM.CreateAsync(prof);
+                
+            }
+            catch (DbUpdateException ex)
+            {
+                var sb = new StringBuilder();
+                var innerEx = ex.InnerException;
+
+                while (innerEx != null)
+                {
+                    sb.AppendLine(innerEx.Message);
+                    innerEx = innerEx.InnerException;
+                }
+
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Inner Exception: {sb.ToString()}");
+
+                throw;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {

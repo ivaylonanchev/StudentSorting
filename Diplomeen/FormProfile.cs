@@ -36,7 +36,7 @@ namespace PresentationLayer
             labelEGN.Text = profile.EGN;
 
         }
-
+        
         private void Profile_Load(object sender, EventArgs e)
         {
 

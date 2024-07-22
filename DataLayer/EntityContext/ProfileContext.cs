@@ -36,7 +36,9 @@ namespace DataLayer.EntityContext
             try
             {
                 Profile profiledb = await context.Profiles.FindAsync(key);
-
+                //var comps = await context.CompetitionsScores.Where(x => x.CompetitionId == key).ToListAsync();
+                
+                //context.RemoveRange(comps);
                 context.Profiles.Remove(profiledb);
                 await context.SaveChangesAsync();
             }

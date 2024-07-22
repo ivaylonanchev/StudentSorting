@@ -10,12 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataLayer;
+using ServiceLayer.EntityManager;
 
 namespace PresentationLayer
 {
     public partial class CompetitionFormAdmin : Form
     {
         CompetitionManager competitionManager = new CompetitionManager(ProjectDbManager.CreateContext());
+        
         public CompetitionFormAdmin()
         {
             InitializeComponent();
@@ -32,6 +35,22 @@ namespace PresentationLayer
                 CompetitionManager competitionmanager = new CompetitionManager(ProjectDbManager.CreateContext());
                 await competitionmanager.CreateAsync(competition);
                 MessageBox.Show("Competition created");
+
+                var profileManager = new ProfileManager(ProjectDbManager.CreateContext());
+                var sda = await profileManager.ReadAllAsync();
+                var ids = sda.Select(x => x.ID).ToList();
+                
+                foreach (var id in ids)
+                {
+                    var competitionscoremanager = new CompetitionScoreManager(ProjectDbManager.CreateContext());
+                    CompetitionScore score = new CompetitionScore()
+                    {
+                        CompetitionId = competition.ID,
+                        ProfileId = id
+                    };
+                    competitionscoremanager.CreateAsync(score);
+                }
+                
                 textBox1.ResetText();
                 dateTimePicker1.ResetText();
                 await ShowDataGrid();
@@ -92,7 +111,7 @@ namespace PresentationLayer
             compt = (Competition)dataGridView1.CurrentRow.DataBoundItem;
             CompetitionManager cm = new CompetitionManager(ProjectDbManager.CreateContext());
             Competition c = await cm.ReadAsync(compt.ID);
-            c.Students.Clear();
+
             await cm.UpdateAsync(c);
             await cm.DeleteAsync(c.ID);
 

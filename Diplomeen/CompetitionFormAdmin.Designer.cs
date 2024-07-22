@@ -33,13 +33,12 @@
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             textBox1 = new System.Windows.Forms.TextBox();
             dataGridView1 = new System.Windows.Forms.DataGridView();
-            iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            isConductedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             competitionBindingSource = new System.Windows.Forms.BindingSource(components);
             button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
+            nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            isConductedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)competitionBindingSource).BeginInit();
             SuspendLayout();
@@ -77,7 +76,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { iDDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn, isConductedDataGridViewCheckBoxColumn });
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { nameDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn, isConductedDataGridViewCheckBoxColumn });
             dataGridView1.DataSource = competitionBindingSource;
             dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -88,38 +87,6 @@
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.RowEnter += dataGridView1_RowEnter;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            iDDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Име на състезанието";
-            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            dateDataGridViewTextBoxColumn.HeaderText = "Дата";
-            dateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            dateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // isConductedDataGridViewCheckBoxColumn
-            // 
-            isConductedDataGridViewCheckBoxColumn.DataPropertyName = "IsConducted";
-            isConductedDataGridViewCheckBoxColumn.HeaderText = "Проведено : ДА/НЕ";
-            isConductedDataGridViewCheckBoxColumn.MinimumWidth = 6;
-            isConductedDataGridViewCheckBoxColumn.Name = "isConductedDataGridViewCheckBoxColumn";
-            isConductedDataGridViewCheckBoxColumn.Width = 125;
             // 
             // competitionBindingSource
             // 
@@ -144,6 +111,30 @@
             button3.Text = "Изтрий";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Име на състезанието";
+            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            dateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            dateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            dateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // isConductedDataGridViewCheckBoxColumn
+            // 
+            isConductedDataGridViewCheckBoxColumn.DataPropertyName = "IsConducted";
+            isConductedDataGridViewCheckBoxColumn.HeaderText = "Проведено : ДА/НЕ";
+            isConductedDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            isConductedDataGridViewCheckBoxColumn.Name = "isConductedDataGridViewCheckBoxColumn";
+            isConductedDataGridViewCheckBoxColumn.Width = 125;
             // 
             // CompetitionFormAdmin
             // 
@@ -172,11 +163,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource competitionBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isConductedDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
     }
 }

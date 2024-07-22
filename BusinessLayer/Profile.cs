@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace BusinessLayer
 {
@@ -34,10 +36,15 @@ namespace BusinessLayer
         public DateTime BirthDate { get; set; }
 
 
-
+        [ForeignKey(nameof(CompetitionScoreId))]
+        public int CompetitionScoreId { get; set; }
+        public List<CompetitionScore> CompetitionScores { get; set; }
         public int PointsCompetition1 { get; set; }
         public int PointsCompetition2 { get; set; }
         public int PointsCompetition3 { get; set; }
+
+
+
         //[Required]
         [Range(0, 100)]
         public double Rating { get; set; }
@@ -78,6 +85,7 @@ namespace BusinessLayer
             this.Gender = Convert.ToInt32(this.EGN[9]) % 2 == 0 ? 'M' : 'F';
             this.BirthDate = birthday;
             Rating = PointsCompetition1 + PointsCompetition2 + PointsCompetition3;
+            CompetitionScores = new List<CompetitionScore>();
 
         }
     }

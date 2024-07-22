@@ -8,8 +8,10 @@ namespace BusinessLayer
 {
     public class CompetitionScore
     {
-        public Competition Competition_FK { get; set; }
-        public Student Student_FK{ get; set; }
+        public int CompetitionId { get; set; }
+        public Competition Competition { get; set; }
+        public int ProfileId { get; set; }
+        public Profile Profile{ get; set; }
         public int Points { get; set; }
 
     }

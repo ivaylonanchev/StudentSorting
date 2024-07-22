@@ -5,11 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Update.Internal;
+
 namespace DataLayer.EntityContext
 {
     public class CompetitionContext : IDB<Competition, int>
     {
         private ProjectDbContext context;
+        private Competition competition;
+        
         public CompetitionContext(ProjectDbContext context)
         {
             this.context = context;
@@ -35,6 +39,10 @@ namespace DataLayer.EntityContext
                 Competition competitiondb = await context.Competitions.FindAsync(key);
 
                 context.Competitions.Remove(competitiondb);
+
+                var comps = await context.CompetitionsScores.Where(x=>x.CompetitionId== key).ToListAsync();
+                context.RemoveRange(comps);
+                
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -61,7 +69,7 @@ namespace DataLayer.EntityContext
         {
             try
             {
-                return await context.Competitions.Include(c => c.Students).FirstOrDefaultAsync(c => c.ID == key);
+                return await context.Competitions.Include(c => c.CompetitionScores).FirstOrDefaultAsync(c => c.ID == key);
                 // return await context.Competitions.FindAsync(key);
             }
             catch (Exception ex)
@@ -96,25 +104,27 @@ namespace DataLayer.EntityContext
 
                 //context.Entry(orderFromDB).CurrentValues.SetValues(item);
                 // context.Update(item);
-                Profile profile = await context.Profiles.FindAsync(ID.ID);
+                Profile profile = await context.Profiles
+                    .FindAsync(ID.ID);
+                var comp = context.CompetitionsScores.First(x => x.ProfileId == ID.ID && x.CompetitionId == item.ID);
+
                 if (p == 1)
                 {
-                    profile.PointsCompetition1 = ID.PointsCompetition1;
+                    comp.Points = ID.PointsCompetition1;
                 }
                 else if (p == 2)
                 {
-                    profile.PointsCompetition2 = ID.PointsCompetition2;
+                    comp.Points = ID.PointsCompetition2;
                 }
                 else if (p == 3)
                 {
-                    profile.PointsCompetition3 = ID.PointsCompetition3;
+                    comp.Points = ID.PointsCompetition3;
                 }
                 profile.NewRating();
-                Competition competition = await ReadAsync(item.ID);
-                competition.Students.Add(profile);
+
+                competition.CompetitionScores.Add(comp);
                 context.Update(competition);
                 await context.SaveChangesAsync();
-
             }
             catch (Exception ex)
             {

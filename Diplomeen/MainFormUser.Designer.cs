@@ -31,12 +31,9 @@ namespace PresentationLayer
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormUser));
             panelMenu = new System.Windows.Forms.Panel();
-            reiting = new System.Windows.Forms.Button();
-            profil = new System.Windows.Forms.Button();
             prietiUchenici = new System.Windows.Forms.Button();
             podadeniZaqvleniq = new System.Windows.Forms.Button();
             klasirane = new System.Windows.Forms.Button();
-            sustezaniq = new System.Windows.Forms.Button();
             panelLogo = new System.Windows.Forms.Panel();
             button1 = new System.Windows.Forms.Button();
             lblTitle = new System.Windows.Forms.Label();
@@ -44,6 +41,8 @@ namespace PresentationLayer
             panel1 = new System.Windows.Forms.Panel();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            reiting = new System.Windows.Forms.Button();
+            profil = new System.Windows.Forms.Button();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panel1.SuspendLayout();
@@ -52,53 +51,17 @@ namespace PresentationLayer
             // panelMenu
             // 
             panelMenu.BackColor = System.Drawing.Color.FromArgb(51, 51, 76);
-            panelMenu.Controls.Add(reiting);
             panelMenu.Controls.Add(profil);
+            panelMenu.Controls.Add(reiting);
             panelMenu.Controls.Add(prietiUchenici);
             panelMenu.Controls.Add(podadeniZaqvleniq);
             panelMenu.Controls.Add(klasirane);
-            panelMenu.Controls.Add(sustezaniq);
             panelMenu.Controls.Add(panelLogo);
             panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             panelMenu.Location = new System.Drawing.Point(0, 0);
-            panelMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new System.Drawing.Size(240, 617);
+            panelMenu.Size = new System.Drawing.Size(210, 469);
             panelMenu.TabIndex = 0;
-            // 
-            // reiting
-            // 
-            reiting.Dock = System.Windows.Forms.DockStyle.Top;
-            reiting.FlatAppearance.BorderSize = 0;
-            reiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            reiting.ForeColor = System.Drawing.Color.Gainsboro;
-            reiting.Location = new System.Drawing.Point(0, 423);
-            reiting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            reiting.Name = "reiting";
-            reiting.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            reiting.Size = new System.Drawing.Size(240, 81);
-            reiting.TabIndex = 6;
-            reiting.Text = "Рейтинг";
-            reiting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            reiting.UseVisualStyleBackColor = true;
-            reiting.Click += reiting_Click;
-            // 
-            // profil
-            // 
-            profil.Dock = System.Windows.Forms.DockStyle.Top;
-            profil.FlatAppearance.BorderSize = 0;
-            profil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            profil.ForeColor = System.Drawing.Color.Gainsboro;
-            profil.Location = new System.Drawing.Point(0, 342);
-            profil.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            profil.Name = "profil";
-            profil.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            profil.Size = new System.Drawing.Size(240, 81);
-            profil.TabIndex = 5;
-            profil.Text = "Профил";
-            profil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            profil.UseVisualStyleBackColor = true;
-            profil.Click += profil_Click;
             // 
             // prietiUchenici
             // 
@@ -106,11 +69,10 @@ namespace PresentationLayer
             prietiUchenici.FlatAppearance.BorderSize = 0;
             prietiUchenici.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             prietiUchenici.ForeColor = System.Drawing.Color.Gainsboro;
-            prietiUchenici.Location = new System.Drawing.Point(0, 261);
-            prietiUchenici.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            prietiUchenici.Location = new System.Drawing.Point(0, 135);
             prietiUchenici.Name = "prietiUchenici";
-            prietiUchenici.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            prietiUchenici.Size = new System.Drawing.Size(240, 81);
+            prietiUchenici.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            prietiUchenici.Size = new System.Drawing.Size(210, 61);
             prietiUchenici.TabIndex = 4;
             prietiUchenici.Text = "Приети ученици";
             prietiUchenici.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,11 +85,10 @@ namespace PresentationLayer
             podadeniZaqvleniq.FlatAppearance.BorderSize = 0;
             podadeniZaqvleniq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             podadeniZaqvleniq.ForeColor = System.Drawing.Color.Gainsboro;
-            podadeniZaqvleniq.Location = new System.Drawing.Point(0, 261);
-            podadeniZaqvleniq.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            podadeniZaqvleniq.Location = new System.Drawing.Point(0, 135);
             podadeniZaqvleniq.Name = "podadeniZaqvleniq";
-            podadeniZaqvleniq.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            podadeniZaqvleniq.Size = new System.Drawing.Size(240, 356);
+            podadeniZaqvleniq.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            podadeniZaqvleniq.Size = new System.Drawing.Size(210, 334);
             podadeniZaqvleniq.TabIndex = 3;
             podadeniZaqvleniq.Text = "Подадени заявления";
             podadeniZaqvleniq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -140,34 +101,15 @@ namespace PresentationLayer
             klasirane.FlatAppearance.BorderSize = 0;
             klasirane.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             klasirane.ForeColor = System.Drawing.Color.Gainsboro;
-            klasirane.Location = new System.Drawing.Point(0, 180);
-            klasirane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            klasirane.Location = new System.Drawing.Point(0, 74);
             klasirane.Name = "klasirane";
-            klasirane.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            klasirane.Size = new System.Drawing.Size(240, 81);
+            klasirane.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            klasirane.Size = new System.Drawing.Size(210, 61);
             klasirane.TabIndex = 2;
             klasirane.Text = "Класиране от състезания";
             klasirane.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             klasirane.UseVisualStyleBackColor = true;
             klasirane.Click += klasirane_Click;
-            // 
-            // sustezaniq
-            // 
-            sustezaniq.Dock = System.Windows.Forms.DockStyle.Top;
-            sustezaniq.FlatAppearance.BorderSize = 0;
-            sustezaniq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            sustezaniq.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            sustezaniq.ForeColor = System.Drawing.Color.Gainsboro;
-            sustezaniq.Location = new System.Drawing.Point(0, 99);
-            sustezaniq.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            sustezaniq.Name = "sustezaniq";
-            sustezaniq.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            sustezaniq.Size = new System.Drawing.Size(240, 81);
-            sustezaniq.TabIndex = 1;
-            sustezaniq.Text = "Състезания";
-            sustezaniq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            sustezaniq.UseVisualStyleBackColor = true;
-            sustezaniq.Click += sustezaniq_Click;
             // 
             // panelLogo
             // 
@@ -176,9 +118,8 @@ namespace PresentationLayer
             panelLogo.Controls.Add(lblTitle);
             panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             panelLogo.Location = new System.Drawing.Point(0, 0);
-            panelLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new System.Drawing.Size(240, 99);
+            panelLogo.Size = new System.Drawing.Size(210, 74);
             panelLogo.TabIndex = 0;
             panelLogo.Paint += panelLogo_Paint;
             // 
@@ -190,10 +131,9 @@ namespace PresentationLayer
             button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             button1.ForeColor = System.Drawing.Color.Gainsboro;
             button1.Location = new System.Drawing.Point(0, 0);
-            button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            button1.Size = new System.Drawing.Size(240, 99);
+            button1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            button1.Size = new System.Drawing.Size(210, 74);
             button1.TabIndex = 2;
             button1.Text = "НАЧАЛО";
             button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -205,9 +145,9 @@ namespace PresentationLayer
             lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             lblTitle.Font = new System.Drawing.Font("Segoe UI Emoji", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            lblTitle.Location = new System.Drawing.Point(12, 48);
+            lblTitle.Location = new System.Drawing.Point(10, 36);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new System.Drawing.Size(147, 36);
+            lblTitle.Size = new System.Drawing.Size(129, 27);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "НАЧАЛО";
             lblTitle.Click += lblTitle_Click;
@@ -216,10 +156,9 @@ namespace PresentationLayer
             // 
             panelTitleBar.BackColor = System.Drawing.Color.FromArgb(51, 51, 70);
             panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            panelTitleBar.Location = new System.Drawing.Point(240, 0);
-            panelTitleBar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            panelTitleBar.Location = new System.Drawing.Point(210, 0);
             panelTitleBar.Name = "panelTitleBar";
-            panelTitleBar.Size = new System.Drawing.Size(887, 99);
+            panelTitleBar.Size = new System.Drawing.Size(778, 74);
             panelTitleBar.TabIndex = 1;
             panelTitleBar.Paint += panelTitleBar_Paint;
             // 
@@ -227,9 +166,10 @@ namespace PresentationLayer
             // 
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
-            panel1.Location = new System.Drawing.Point(240, 99);
+            panel1.Location = new System.Drawing.Point(210, 74);
+            panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(887, 518);
+            panel1.Size = new System.Drawing.Size(776, 388);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
             // 
@@ -237,9 +177,9 @@ namespace PresentationLayer
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(147, 147);
+            label1.Location = new System.Drawing.Point(129, 110);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(638, 160);
+            label1.Size = new System.Drawing.Size(500, 125);
             label1.TabIndex = 2;
             label1.Text = resources.GetString("label1.Text");
             // 
@@ -247,23 +187,54 @@ namespace PresentationLayer
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(312, 41);
+            label2.Location = new System.Drawing.Point(273, 31);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(261, 40);
+            label2.Size = new System.Drawing.Size(210, 31);
             label2.TabIndex = 1;
             label2.Text = "ДОБРЕ ДОШЛИ";
             // 
+            // reiting
+            // 
+            reiting.Dock = System.Windows.Forms.DockStyle.Top;
+            reiting.FlatAppearance.BorderSize = 0;
+            reiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            reiting.ForeColor = System.Drawing.Color.Gainsboro;
+            reiting.Location = new System.Drawing.Point(0, 196);
+            reiting.Name = "reiting";
+            reiting.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            reiting.Size = new System.Drawing.Size(210, 61);
+            reiting.TabIndex = 6;
+            reiting.Text = "Рейтинг";
+            reiting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            reiting.UseVisualStyleBackColor = true;
+            reiting.Click += reiting_Click;
+            // 
+            // profil
+            // 
+            profil.Dock = System.Windows.Forms.DockStyle.Top;
+            profil.FlatAppearance.BorderSize = 0;
+            profil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            profil.ForeColor = System.Drawing.Color.Gainsboro;
+            profil.Location = new System.Drawing.Point(0, 257);
+            profil.Name = "profil";
+            profil.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            profil.Size = new System.Drawing.Size(210, 61);
+            profil.TabIndex = 7;
+            profil.Text = "Профил";
+            profil.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            profil.UseVisualStyleBackColor = true;
+            profil.Click += profil_Click_1;
+            // 
             // MainFormUser
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1127, 617);
+            ClientSize = new System.Drawing.Size(988, 469);
             Controls.Add(panel1);
             Controls.Add(panelTitleBar);
             Controls.Add(panelMenu);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            MinimumSize = new System.Drawing.Size(1145, 664);
+            MinimumSize = new System.Drawing.Size(1004, 508);
             Name = "MainFormUser";
             Text = "Класиране";
             Load += model_Load;
@@ -284,16 +255,15 @@ namespace PresentationLayer
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button reiting;
-        private System.Windows.Forms.Button profil;
         private System.Windows.Forms.Button prietiUchenici;
         private System.Windows.Forms.Button podadeniZaqvleniq;
         private System.Windows.Forms.Button klasirane;
-        private System.Windows.Forms.Button sustezaniq;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button reiting;
+        private System.Windows.Forms.Button profil;
     }
 }

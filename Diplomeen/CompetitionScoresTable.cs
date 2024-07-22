@@ -36,30 +36,33 @@ namespace PresentationLayer
         List<Profile> profiles;
         private async Task Initialize(int ID, int p)
         {
-            profiles = (await manager.ReadAsync(ID)).Students;
+            //profiles = (await manager.ReadAsync(ID)).Profiles;
             await ShowDataGrid(ID, p);
         }
         private async Task ShowDataGrid(int ID, int p)
         {
 
-            foreach (var item in profiles)
+            if (profiles.Count > 0)
             {
-                tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 1;
-                tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-                tableLayoutPanel1.Controls.Add(new Label() { Text = $"{item.FirstName}" }, 0, tableLayoutPanel1.RowCount - 1);
-                tableLayoutPanel1.Controls.Add(new Label() { Text = $" {item.MiddleName}" }, 1, tableLayoutPanel1.RowCount - 1);
-                tableLayoutPanel1.Controls.Add(new Label() { Text = $" {item.LastName}" }, 2, tableLayoutPanel1.RowCount - 1);
-                if (p == 1)
+                foreach (var item in profiles)
                 {
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = item.PointsCompetition1.ToString() }, 3, tableLayoutPanel1.RowCount - 1);
-                }
-                else if (p == 2)
-                {
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = item.PointsCompetition2.ToString() }, 3, tableLayoutPanel1.RowCount - 1);
-                }
-                else if (p == 3)
-                {
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = item.PointsCompetition3.ToString() }, 3, tableLayoutPanel1.RowCount - 1);
+                    tableLayoutPanel1.RowCount = tableLayoutPanel1.RowCount + 1;
+                    tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = $"{item.FirstName}" }, 0, tableLayoutPanel1.RowCount - 1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = $" {item.MiddleName}" }, 1, tableLayoutPanel1.RowCount - 1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = $" {item.LastName}" }, 2, tableLayoutPanel1.RowCount - 1);
+                    if (p == 1)
+                    {
+                        tableLayoutPanel1.Controls.Add(new Label() { Text = item.PointsCompetition1.ToString() }, 3, tableLayoutPanel1.RowCount - 1);
+                    }
+                    else if (p == 2)
+                    {
+                        tableLayoutPanel1.Controls.Add(new Label() { Text = item.PointsCompetition2.ToString() }, 3, tableLayoutPanel1.RowCount - 1);
+                    }
+                    else if (p == 3)
+                    {
+                        tableLayoutPanel1.Controls.Add(new Label() { Text = item.PointsCompetition3.ToString() }, 3, tableLayoutPanel1.RowCount - 1);
+                    }
                 }
             }
         }

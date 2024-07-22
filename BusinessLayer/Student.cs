@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -9,6 +10,8 @@ namespace BusinessLayer
 {
     public class Student
     {
+        [Key]
+        public int StudentId { get; set; }
         public string EGN { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -25,6 +28,10 @@ namespace BusinessLayer
             this.Gender = Convert.ToInt32(this.EGN[9]) % 2 == 0 ? 'M' : 'F';
             this.BirthDate = birthday;
 
+        }
+        public Student()
+        {
+            
         }
 
     }

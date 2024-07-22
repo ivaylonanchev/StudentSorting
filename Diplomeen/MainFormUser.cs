@@ -117,14 +117,9 @@ namespace PresentationLayer
             OpenChildForm(new AcceptedStudentsFormUser(), sender);
         }
 
-        private void profil_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormProfile(profile), sender);
-        }
-
         private void reiting_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new RatingStudents(), sender);
+            OpenChildForm(new RatingStudents(profile), sender);
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
@@ -165,6 +160,11 @@ namespace PresentationLayer
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void profil_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormProfile(profile), sender);
         }
     }
 }
