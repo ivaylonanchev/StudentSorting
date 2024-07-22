@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using Microsoft.AspNetCore.Identity;
 using ServiceLayer;
 using ServiceLayer.EntityManager;
 using System;
@@ -15,11 +16,15 @@ namespace PresentationLayer
 {
     public partial class CompetitionScoresTable : Form
     {
+        private ProfileManager profileManager;
         public CompetitionScoresTable(int ID, int p)
         {
             InitializeComponent();
             manager = new CompetitionManager(ProjectDbManager.CreateContext());
             Initialize(ID, p);
+
+            
+            
         }
 
         private void CompetitionScoresTable_Load(object sender, EventArgs e)
@@ -41,7 +46,8 @@ namespace PresentationLayer
         }
         private async Task ShowDataGrid(int ID, int p)
         {
-
+            profileManager = new ProfileManager(ProjectDbManager.CreateContext());
+            profiles = await profileManager.ReadAllAsync();
             if (profiles.Count > 0)
             {
                 foreach (var item in profiles)

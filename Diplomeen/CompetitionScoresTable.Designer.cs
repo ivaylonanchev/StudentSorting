@@ -38,21 +38,23 @@
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            tableLayoutPanel1.Location = new System.Drawing.Point(103, 52);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(496, 120);
+            tableLayoutPanel1.Size = new System.Drawing.Size(434, 90);
             tableLayoutPanel1.TabIndex = 0;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // CompetitionScoresTable
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(700, 338);
             Controls.Add(tableLayoutPanel1);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             Name = "CompetitionScoresTable";
             Text = "CompetitionScoresTable";
             Load += CompetitionScoresTable_Load;

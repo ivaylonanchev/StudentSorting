@@ -93,9 +93,6 @@ namespace DataLayer.EntityContext
         {
             try
             {
-                /*  Profile profileFromDB = await ReadAsync(item.ID);
-
-                  context.Entry(profileFromDB).CurrentValues.SetValues(item);*/
                 context.Update(item);
                 await context.SaveChangesAsync();
 

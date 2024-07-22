@@ -77,6 +77,7 @@ namespace PresentationLayer
                 profile.NewRating();
 
                 //c.Students.Add(profile);
+                await manager.UpdateAsync(profile);
                 await competitionManager.UpdateAsync(c[0], profile, 1);
             }
             else if (radioButton2.Checked)
@@ -85,6 +86,7 @@ namespace PresentationLayer
                 profile.NewRating();
 
                 //c.Students.Add(profile);
+                await manager.UpdateAsync(profile);
                 await competitionManager.UpdateAsync(c[1], profile, 2); ;
             }
             else if (radioButton3.Checked)
@@ -93,6 +95,7 @@ namespace PresentationLayer
                 profile.NewRating();
 
                 //c.Students.Add(profile);
+                await manager.UpdateAsync(profile);
                 await competitionManager.UpdateAsync(c[2], profile, 3);
             }
 

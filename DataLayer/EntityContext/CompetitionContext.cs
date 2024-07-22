@@ -122,8 +122,8 @@ namespace DataLayer.EntityContext
                 }
                 profile.NewRating();
 
-                competition.CompetitionScores.Add(comp);
-                context.Update(competition);
+                //competition.CompetitionScores.Add(comp);
+                context.Update(comp);
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
